@@ -5,3 +5,6 @@
 #message(STATUS "Skarnet found: " ${SKARNET_VERSION_STRING})
 #include_directories(${SKARNET_INCLUDE_DIRS})
 #link_directories(${SKARNET_LIBRARY_DIRS})
+
+include_directories(${PROJECT_SOURCE_DIR}/cots/include)
+link_directories(${PROJECT_SOURCE_DIR}/cots/lib)

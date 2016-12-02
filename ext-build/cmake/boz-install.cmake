@@ -3,7 +3,7 @@ macro(BOZ_INSTALL_HEADER arg)
 	get_filename_component(prefix ${arg} DIRECTORY )
 	get_filename_component(name ${arg} NAME )
 	message(STATUS "Install header: ${name}")
-	install(FILES ${CMAKE_BINARY_DIR}/include/${arg}
+	install(FILES ${CMAKE_BINARY_DIR}/include/public/${arg}
 		DESTINATION ${HEADER_INSTALL_DIR}/${prefix}
 		)
 endmacro()
