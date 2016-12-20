@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.0)
 project (bozCommand)
 
 include(project_ver.cmake)
-include(ext-build/cmake/boz-build.cmake)
+include(bozBuild/ext-build/cmake/boz-build.cmake)
 include(CTest)
 
 include(tools.cmake)
