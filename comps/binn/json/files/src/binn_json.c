@@ -1,54 +1,6 @@
 
 #include "private/json_p.h"
 
-///////////////////////////////////////////////////////////////////////////////
-binn* json_obj_to_binn(json_t *base) {
-  size_t  i, count;
-  json_t  *value;
-  const char  *key;
-  binn  *obj, *list;
-
-  switch (json_typeof(base)) {
-  case JSON_OBJECT:
-    obj = binn_object();
-    json_object_foreach(base, key, value) {
-      if (binn_object_set_new(obj, (char*)key, json_obj_to_binn(value)) == FALSE) { binn_free(obj); return NULL; }
-    }
-    return obj;
-
-  case JSON_ARRAY:
-    list = binn_list();
-    count = json_array_size(base);
-    for (i = 0; i < count; i++) {
-      value = json_array_get(base, i);
-      if (binn_list_add_new(list, json_obj_to_binn(value)) == FALSE) { binn_free(list); return NULL; }
-    }
-    return list;
-
-  case JSON_STRING:
-    return binn_string((char*)json_string_value(base), BINN_TRANSIENT);
-
-  case JSON_INTEGER:
-    return binn_int64(json_integer_value(base));
-
-  case JSON_REAL:
-    return binn_double(json_real_value(base));
-
-  case JSON_TRUE:
-    return binn_bool(TRUE);
-
-  case JSON_FALSE:
-    return binn_bool(FALSE);
-
-  case JSON_NULL:
-    return binn_null();
-
-  default:
-    return NULL;
-  }
-
-}
-
 /*************************************************************************************/
 
 BINN_PRIVATE json_t * binn_to_json_obj2(binn *base) {
@@ -179,21 +131,6 @@ json_t * binn_to_json_obj(void *base) {
 
 }
 
-/*************************************************************************************/
-
-binn* json_to_binn(char *json_str) {
-  json_t *base;
-  //json_error_t error;
-  binn *item;
-
-  base = json_loads(json_str, 0, NULL);
-  if (base == NULL) return FALSE;
-
-  item = json_obj_to_binn(base);
-
-  json_decref(base);
-  return item;
-}
 
 /*************************************************************************************/
 

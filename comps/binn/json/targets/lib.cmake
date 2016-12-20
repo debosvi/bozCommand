@@ -12,6 +12,9 @@ set(COMP_EXT_LIB_DEPS jansson)
 set(LOCAL_SRC_DIR_SUFFIX src)
 
 set(LOCAL_SRC_FILES
+    json_to_binn.c
+    json_obj_to_binn.c
+    
     binn_to_json.c
     binn_to_json_str.c
 )

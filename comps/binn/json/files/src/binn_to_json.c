@@ -35,7 +35,7 @@ static json_t* binn_to_json_complex(const binn_type_t type, const binn_t node) {
             value = json_array();
             binn_list_foreach(node, binn_value) {
                 BINN_PRINT_DEBUG("%s: loop list binn (%d)\n", __FUNCTION__, binn_value);
-                json_array_append_new(value, binn_to_json(binn_value));
+                json_array_append_new(value, binn_to_json_obj(binn_value));
             }
             break;
             
@@ -46,7 +46,7 @@ static json_t* binn_to_json_complex(const binn_type_t type, const binn_t node) {
                 binn_map_get_id(binn_value, &id);
                 BINN_PRINT_DEBUG("%s: id (%d)\n", __FUNCTION__, id);
                 snprintf(tmp, 16, "%d", id);                
-                json_object_set_new(value, tmp, binn_to_json(binn_value));
+                json_object_set_new(value, tmp, binn_to_json_obj(binn_value));
             }
             break;
             
@@ -56,7 +56,7 @@ static json_t* binn_to_json_complex(const binn_type_t type, const binn_t node) {
                 BINN_PRINT_DEBUG("%s: loop object binn (%d)\n", __FUNCTION__, binn_value);
                 binn_object_get_key(binn_value, &key);
                 BINN_PRINT_DEBUG("%s: key (%s)\n", __FUNCTION__, key);
-                json_object_set_new(value, key, binn_to_json(binn_value));
+                json_object_set_new(value, key, binn_to_json_obj(binn_value));
             }
             break;
         
@@ -68,7 +68,7 @@ static json_t* binn_to_json_complex(const binn_type_t type, const binn_t node) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-json_t* binn_to_json(const binn_t node) {
+json_t* binn_to_json_obj(const binn_t node) {
     binn_internal_t* p=0;
     json_t    *value=0;
     binn_type_t ltype=BINN_TYPE_INIT;

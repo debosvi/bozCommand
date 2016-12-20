@@ -5,7 +5,7 @@ set(COMP_SRC_PROFILE "library")
 set(COMP_SRC_LIB_TYPE "both")
 set(COMP_SRC_LIB_NAME "binn")
 
-set(COMP_EXT_LIB_DEPS skarnet)
+set(COMP_SRC_LIB_DEPS skarnet)
 
 ###############################################################################
 set(LOCAL_SRC_DIR_SUFFIX src)
@@ -17,6 +17,7 @@ set(LOCAL_SRC_FILES
     binn_blob.c
     binn_copy_value.c
     binn_create.c
+    binn_check.c
     binn_free.c
     binn_get_value.c
     binn_get_value_from_key.c

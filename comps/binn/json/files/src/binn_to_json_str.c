@@ -5,7 +5,7 @@
 char* binn_to_json_str(const binn_t node) {
     json_t *json=0;
     char *ptr=0;
-    json = binn_to_json(node);
+    json = binn_to_json_obj(node);
     if(!json) goto exit;
     ptr = json_dumps(json, JSON_PRESERVE_ORDER);
     json_decref(json);

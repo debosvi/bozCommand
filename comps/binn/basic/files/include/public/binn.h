@@ -25,8 +25,9 @@ extern binn_t binn_list(void);
 extern binn_t binn_map(void);
 extern binn_t binn_object(void);
 extern binn_t binn_clone(const binn_t item);
+extern int binn_check(const binn_t item);
 
-extern void binn_free(binn_t item);
+extern void binn_free(const binn_t item);
 
 // --- ALLOCATION FUNCTIONS  ----------------------------------------------------------
 typedef void* (*binn_malloc_f)(size_t);
