@@ -26,7 +26,7 @@ static void binn_free_internal_storage(binn_internal_t* p) {
 void binn_free(const binn_t item) {
     binn_internal_t* _p=0;
     
-    if(item==BINN_INVALID) goto exit;    
+    if(binn_check(item)) goto exit;    
     
     _p = GENSETDYN_P(binn_internal_t, &binn_storage_g, item);
     if(!_p) goto exit;

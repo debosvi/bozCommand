@@ -32,18 +32,23 @@ binn_t json_obj_to_binn(json_t *base) {
 
         case JSON_STRING: 
             item=binn_string((char*)json_string_value(base));
+            break;
 
         case JSON_INTEGER:
-            return binn_int64(json_integer_value(base));
+            item=binn_int64(json_integer_value(base));
+            break;
 
         case JSON_REAL:
-            return binn_double(json_real_value(base));
+            item=binn_double(json_real_value(base));
+            break;
 
         case JSON_TRUE:
-            return binn_bool(1);
+            item=binn_bool(1);
+            break;
 
         case JSON_FALSE:
-            return binn_bool(0);
+            item=binn_bool(0);
+            break;
 
         // case JSON_NULL:
             // return binn_null();
