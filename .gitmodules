@@ -1,0 +1,4 @@
+[submodule "bozBuild"]
+	path = bozBuild
+	url = https://github.com/debosvi/bozBuild.git
+	branch = develop

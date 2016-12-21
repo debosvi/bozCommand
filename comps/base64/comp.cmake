@@ -1,0 +1,3 @@
+
+set(COMP_NAME "base64")
+set(COMP_HEADER_PREFIX "b64")
