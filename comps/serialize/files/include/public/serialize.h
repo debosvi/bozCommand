@@ -7,11 +7,11 @@ extern "C" {
 #endif
 
 typedef enum {
-    SERIALIZE_NONE=0,
-    SERIALIZE_SEND,
-    SERIALIZE_RECEIVE,
-    SERIALIZE_EVENT,
-    SERIALIZE_COUNT 
+    BOZ_SERIALIZE_NONE=0,
+    BOZ_SERIALIZE_SEND,
+    BOZ_SERIALIZE_RECEIVE,
+    BOZ_SERIALIZE_EVENT,
+    BOZ_SERIALIZE_COUNT 
 } boz_serialize_type_t;
     
 extern char* boz_serialize(
