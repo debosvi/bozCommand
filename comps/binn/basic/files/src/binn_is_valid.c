@@ -27,6 +27,10 @@ int binn_is_valid(binn_internal_t *item, binn_type_t *ptype, unsigned int *pcoun
             count = 1;
             break;
             
+        case BINN_TYPE_STRING:
+            count=strlen(item->data.str.s);
+            break;
+            
         default:
             BINN_PRINT_DEBUG("%s: type not managed (%d)\n", __FUNCTION__, type);
             break;

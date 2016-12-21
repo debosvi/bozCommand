@@ -27,9 +27,9 @@ int binn_create(binn_t item, const binn_type_t type, const void const *ptr, cons
         case BINN_TYPE_MAP:
         case BINN_TYPE_OBJECT:
             gensetdyn_init(&_p->data.container, sizeof(binn_t), 16, 3, 8);
-			_ret=0;
+            _ret=0;
             break;
-			
+
         case BINN_TYPE_UINT8: 
         case BINN_TYPE_INT8: 
         case BINN_TYPE_UINT16: 
@@ -41,13 +41,15 @@ int binn_create(binn_t item, const binn_type_t type, const void const *ptr, cons
         case BINN_TYPE_FLOAT: 
         case BINN_TYPE_DOUBLE: 
         case BINN_TYPE_BOOL: 
-			_ret=binn_copy_value(ptr, &_p->data, type, size);
+            _ret=binn_copy_value(ptr, &_p->data, type, size);
             break;
         case BINN_TYPE_BLOB: 
         case BINN_TYPE_STRING: 
- 			_ret=(stralloc_copyb (&_p->data.str, ptr, size)?0:1) ;
+            _ret=(stralloc_catb (&_p->data.str, ptr, size)?0:1);
+            if(!_ret) 
+                _ret=(stralloc_append(&_p->data.str, '\0')?0:1);
             break;
-			
+
         default:
             BINN_PRINT_ERROR("%s: type not managed (%d)\n", __FUNCTION__, type);            
             break;

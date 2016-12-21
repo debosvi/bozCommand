@@ -18,8 +18,8 @@ int binn_object_add_item(binn_t object, const char const *key, const binn_t item
         BINN_PRINT_ERROR("%s: bad type, expected(%d), found(%d)!\n", __FUNCTION__, BINN_TYPE_OBJECT, ltype);
         goto exit;
     }    
-	
-	if(binn_search_for_key(object, key)!=BINN_INVALID) {
+
+    if(binn_search_for_key(object, key)!=BINN_INVALID) {
         BINN_PRINT_ERROR("%s: key already found!\n", __FUNCTION__);
         goto exit;
     }

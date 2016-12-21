@@ -78,7 +78,7 @@ json_t* binn_to_json_obj(const binn_t node) {
     if(!p) goto exit;
     
     if(binn_is_valid(p, &ltype, &count)) goto exit;
-    BINN_PRINT_DEBUG("%s: bin is valid, type(%d), count(%d)\n", __FUNCTION__, ltype, count);
+    BINN_PRINT_DEBUG("%s: binn is valid, type(%d), count(%d)\n", __FUNCTION__, ltype, count);
     
     // binn_iter  iter;
     // binn   binn_value={0};
@@ -88,7 +88,7 @@ json_t* binn_to_json_obj(const binn_t node) {
 
 
     switch (p->type) {
-  // case BINN_STRING:
+        case BINN_TYPE_STRING:
   // case BINN_DATE:
   // case BINN_TIME:
   // case BINN_DATETIME:
@@ -98,8 +98,8 @@ json_t* binn_to_json_obj(const binn_t node) {
   // case BINN_CSS:
   // case BINN_JSON:
   // case BINN_JAVASCRIPT:
-    // value = json_string((char *)base->ptr);
-    // break;
+            value = json_string(p->data.str.s);
+            break;
 
   //case BINN_BLOB:
   //  value = json_string((char *)base->ptr);
