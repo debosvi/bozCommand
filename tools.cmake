@@ -6,16 +6,6 @@
 #include_directories(${SKARNET_INCLUDE_DIRS})
 #link_directories(${SKARNET_LIBRARY_DIRS})
 
-message(STATUS "CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
-message(STATUS "CMAKE_HOST_WIN32: ${CMAKE_HOST_WIN32}")
-message(STATUS "MINGW: ${MINGW}")
-message(STATUS "MSYS: ${MSYS}")
-message(STATUS "CYGWIN: ${CYGWIN}")
-message(STATUS "WIN32: ${WIN32}")
-message(STATUS "UNIX: ${UNIX}")
-if(${MINGW})
-    add_definitions(-DWIN32)
-endif()
     
 include_directories($ENV{HOME}/usr/include)
 link_directories($ENV{HOME}/usr/lib)
